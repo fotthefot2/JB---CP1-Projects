@@ -1,3 +1,3 @@
-# Judah Beagley, First Project dont touch this if it aint yours
+# Judah Beagley, First Project
 
 print("hello world!")
