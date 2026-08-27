@@ -14,6 +14,7 @@ if okay == ("yes"):
     for delay in():
         print(delay)
     time.sleep(2)
+    # the code will answer back with the answers they gave
     #name
     name=input("what is your name: ")
     print("Well hello " +name+ "!")
@@ -23,7 +24,7 @@ if okay == ("yes"):
     time.sleep(2)
     #age
     age=input("how old are you: ")
-    print(age+"really is the best age.")
+    print(age+" really is the best age.")
     import time
     for delay in():
         print(delay)
