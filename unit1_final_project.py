@@ -45,7 +45,17 @@ if okay == ("yes"):
     band=input("and what would be your favorite band: ")
     print(band+" has some pretty good songs! good choice.")
 
-
+    print("okay. so your name is " +name+ ". You are " +age+ " and the school you go to is " +school+ ". And your favorite band would be " +band+ ".")
+    import time
+    for delay in():
+        print(delay)
+    time.sleep(5)
+    #if the bot got everything wrong somehow
+    correct=input("did i get everything right: ")
+    if correct ==("no"):
+        print("dang... well i guess we have to restart.")
+    else:
+        print("perfect! Goodbye!")
 
 
 
