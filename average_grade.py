@@ -10,10 +10,13 @@ for i in range(7):
             try:
                  #the f string makes it way shorter while still getting the job done
                  grade = float(input(f"period {i+1}: "))
-                 #the append lets me be lazy and has it show all of it neatly.
+
                  grades.append(grade)
+                 #if the user types anything else other than numbers
                  break
             except ValueError:
                   print("*only numbers*")
 
-print("here are your grades" ())
+average = sum(grades) / len(grades)
+
+print (f"your grade average is {average:.2f}")
