@@ -1,11 +1,11 @@
-#Judah Beagley, idiot proof assignment
+#Judah Beagley, period 1, idiot proof assignment
 
 # name inputs
 
 first_name = input("What is your first name: ").strip().split()
 last_name = input("What is your last name: ").strip().split()
 
-
+full_name = "".join(first_name) + " " + "".join(last_name)
 #phone number input and checker to see if user has phone number
 while True:
     try:       
@@ -28,10 +28,10 @@ while True:
         print("that is not a valid GPA")
 
 if phone_number == False:
-    print(f"Name= {first_name} {last_name}")
+    print(f"Name= {full_name}")
     print(f"you have no phone number")
     print(f"GPA= {gpa}")
 else:
-    print(f"Name= {first_name} {last_name}")
+    print(f"Name= {full_name}")
     print(f"phone number= {phone_number}")
     print(f"GPA= {gpa}")
