@@ -5,7 +5,7 @@
 first_name = input("What is your first name: ").strip().split()
 last_name = input("What is your last name: ").strip().split()
 
-full_name = "".join(first_name) + " " + "".join(last_name)
+full_name = "".join(first_name).upper() + " " + "".join(last_name).upper()
 #phone number input and checker to see if user has phone number
 while True:
     try:       
