@@ -1,0 +1,7 @@
+print(7//2)
+print(7%2)
+print(2**3)
+print(10/4)
+print (3*"ha")
+print("computer"[0:4])
+print('I can\'t')
