@@ -20,7 +20,7 @@ yondu_share = round(keeping_units * 0.13,2)
 first_cut = round(keeping_units * 0.87,2)
 peter_share = round(first_cut * 0.11,2)
 second_cut = round(first_cut * 0.89,2)
-crew_share = round(second_cut / pirates)
+crew_share = round(second_cut / pirates,2)
 
 yondu_share = round(yondu_share + crew_share,2)
 peter_share = round(peter_share + crew_share,2)
