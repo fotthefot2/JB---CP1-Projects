@@ -1,5 +1,5 @@
 # Judah Beagley, period 1, shopping list manager
-instructions = print("this is a shopping list. you can add any items here out of the list provided")
+print("this is a shopping list. you can add any items here out of the list provided")
 shopping_list = []
 while True:
     
