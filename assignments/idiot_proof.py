@@ -13,7 +13,7 @@ while True:
 
         break
     except ValueError:
-        print("What is not a valid phone number")
+        print("That is not a valid phone number")
 if phone_number == ("0"):
     phone_number = False
 
