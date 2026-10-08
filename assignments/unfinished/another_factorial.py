@@ -16,16 +16,6 @@ while True:
             print("invalid input")
         
     if factorial > 0:   
-        factors = range(factorial,0,-1)
-        mapping = map(int, factors)
-        listed_map = list(mapping)
-        mathing = list(map(math.factorial, range(1, factorial + 1)))
-        maths = math.factors
-    for factor in listed_map:
-        print(f"{factor}", end=" X ")
-    print(" ")
-    print(*mathing)
-    print("final answer")
-    print(maths)
-    if factorial == 0:
+        print("why")
+    else:
         print("0 = 1")
