@@ -7,6 +7,7 @@ numbers = range (1,6)
 
 multiplied_numbers = map(times,numbers)
 
+
 print(*list(multiplied_numbers))
 new_numbers = []
 for number in numbers:
