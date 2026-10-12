@@ -21,7 +21,7 @@ while True:
         factor_map = map(mathing, factors)
         result = list(factor_map)[-1]
         chain = " x ".join(str(i) for i in range(factorial, 0, -1))
-            
+
         # i finally figured out how i can print everything nicely!
         print(f"{chain} = {result}")
     else:
