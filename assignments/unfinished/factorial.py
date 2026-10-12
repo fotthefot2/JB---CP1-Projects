@@ -1,6 +1,6 @@
 #judah beagley, period one, factorial calculator
 import math
-factors = []
+mathing = math.factorial
 while True:
     breaker = input("do you want the code to stop(press enter if no type yes if yes): ")
     if breaker == "yes":
@@ -8,6 +8,7 @@ while True:
     while True:
         try:
             factorial = int(input("what do you want the factorial of(whole numbers): "))
+            
             if factorial >= 0:
                 break
         except ValueError:
@@ -16,16 +17,12 @@ while True:
             print("invalid input")
         
     if factorial > 0:   
-        factors = range(factorial,0,-1)
-        mapping = map(int, factors)
-        listed_map = list(mapping)
-        mathing = list(map(math.factorial, range(1, factorial + 1)))
-        maths = math.factors
-    for factor in listed_map:
-        print(f"{factor}", end=" X ")
-    print(" ")
-    print(*mathing)
-    print("final answer")
-    print(maths)
-    if factorial == 0:
+        factors = range(1, factorial + 1)
+        factor_map = map(mathing, factors)
+        result = list(factor_map)[-1]
+        chain = " x ".join(str(n) for n in range(factorial, 0, -1))
+            
+        # i finally figured out how i can print everything nicely!
+        print(f"{chain} = {result}")
+    else:
         print("0 = 1")
