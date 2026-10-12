@@ -20,7 +20,7 @@ while True:
         factors = range(1, factorial + 1)
         factor_map = map(mathing, factors)
         result = list(factor_map)[-1]
-        chain = " x ".join(str(n) for n in range(factorial, 0, -1))
+        chain = " x ".join(str(i) for i in range(factorial, 0, -1))
             
         # i finally figured out how i can print everything nicely!
         print(f"{chain} = {result}")
