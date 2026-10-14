@@ -4,7 +4,6 @@ import time
 print("you wake up in a mysterious place. It seems to be a dark room with white tiles on the ground and silky, almost moist walls with the same tile look. You remember the last time you were awake. You were walking down the street at night, coming back from the gas station right by your house when a cloth was put over your mouth and nose. the next thing you knew you were in here. You see on your left a box with a small drop down for items to come into. Sort of like a vending machine. And to your right you see the way out as well as a passcode. You realize you were put in an escape room. Above the code you see a number. The number reads five.")
 print()
 hints = ['The code is about a specific holiday.', 'The code is something celebrated with giving', 'The code is a certain date', 'The code is something usually in this format: mm/dd']
-code = 1225
 attempts = 5
 win = ()
 options = (1)
@@ -36,7 +35,7 @@ while True:
         while True:
             try:
                 guess = int(input("ENTER GUESS(4 digits only. if you put more, the guess will be wrong.): "))
-                if guess == "1224":
+                if guess == 1225:
                     print("the codelock beeps green and the door opens. You escape into an empty warehouse, and outside there is a man with a briefcase of money. He hands it to you, congratulates you, and knocks you out. You wake up back at the gas station with all the stuff you bought earlier on the street. You get up, and walk home. A monster in one hand, $100,000 in the other.")
                     win = "yes"
                     break
