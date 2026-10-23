@@ -38,7 +38,8 @@ for score in scores:
     total = total + score
 
 average = total / rounds
-print("Your average guesses per round was " + str(average))
+average = round(average,2)
+print("Your average guesses per round was "  ,(average))
 
 best_round = scores[0]
 for i in range(0, rounds): #uneeded -1 runtime error and 0, not 1. logic error
