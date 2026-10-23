@@ -41,7 +41,7 @@ average = total / rounds
 print("Your average guesses per round was " + str(average))
 
 best_round = scores[0]
-for i in range(1, rounds): #uneeded -1 logic error
+for i in range(0, rounds): #uneeded -1 runtime error and 0, not 1. logic error
     if scores[i] < best_round:
         best_round = scores[i]
 
