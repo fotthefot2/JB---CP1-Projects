@@ -15,7 +15,19 @@ def encode (code, shift):
 
     return "".join(new_letters) #THIS FUNCTION TOOK ME SO LONG TO FIGURE OUT I NEVER WANT TO DO THIS AGAIN
 
-    
+def decode (code, shift):
+    letters = list(code.lower())
+    new_letters = []
+
+    for letter in letters:
+        if letter in alphabet:
+            index = alphabet.index(letter)
+            new_index = (index - shift) % 26
+            new_letters.append(alphabet[new_index])
+        else:
+            new_letters.append(letter)
+
+    return "".join(new_letters) #THIS FUNCTION TOOK ME SO LONG TO FIGURE OUT I NEVER WANT TO DO THIS AGAIN
 
 print("welcome to the Caesar Cypher.")
 while True:
@@ -34,9 +46,10 @@ while True:
                 break
 
     elif option == "decode":
-        code = input("what is the message you want to decode: ")
-        print("here are all the possible combinations:")
-        print(code)
-        break
-    break
+        while True:
+            try:
+                code = input("what is the message you want to decode: ")
+                break
+            except ValueError:
+                print("INVALID")
 print("if you see this print statement, it all hopefully works")
