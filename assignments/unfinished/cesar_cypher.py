@@ -1,6 +1,6 @@
 # judah beagley, period 1, Caesar cypher
 
-alphabet = list["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 def encode (code, shift):
     letters = list(code.lower())
     new_letters = []
@@ -14,6 +14,7 @@ def encode (code, shift):
             new_letters.append(letter)
 
     return "".join(new_letters) #THIS FUNCTION TOOK ME SO LONG TO FIGURE OUT I NEVER WANT TO DO THIS AGAIN
+
     
 
 print("welcome to the Caesar Cypher.")
