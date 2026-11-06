@@ -9,19 +9,19 @@ def encode(code, shift):
         else:
             new_letters.append(letter)
 
-        return "".join(new_letters)
+    return "".join(new_letters)
 
 def decode(code, shift):
-    new_letters = []# puts it all in a place i can append it and change it and manipulate it easier
+    new_letters = []
     for letter in code:
-        if letter .isalpha():
+        if letter.isalpha():
             characters = ord("A") if letter.isupper() else ord("a")
             new_code = characters + (ord(letter) - characters - shift) % 26 
             new_letters.append(chr(new_code)) 
         else:
             new_letters.append(letter)
 
-        return "".join(new_letters)
+    return "".join(new_letters)
 
 
 
