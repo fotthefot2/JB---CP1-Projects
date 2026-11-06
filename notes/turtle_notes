@@ -1,0 +1,173 @@
+import turtle
+import time
+
+# ----------------------------
+# Setup Screen & State
+# ----------------------------
+screen = turtle.Screen()
+screen.setup(width=800, height=600)
+screen.title("Animated Landscape - Click Anywhere to Exit")
+screen.bgcolor("#87CEEB")
+screen.tracer(0)  # Turn off auto updates for manual frame control
+
+running = True
+
+def close_app(x, y):
+    global running
+    running = False
+
+# Attach click event to exit gracefully
+screen.onscreenclick(close_app)
+
+t = turtle.Turtle()
+t.hideturtle()
+t.speed(0)
+
+# ----------------------------
+# Drawing Helpers
+# ----------------------------
+def draw_polygon(points, fill_color):
+    t.penup()
+    t.goto(points[0])
+    t.pendown()
+    t.color(fill_color, fill_color)
+    t.begin_fill()
+    for point in points[1:]:
+        t.goto(point)
+    t.goto(points[0])
+    t.end_fill()
+
+def draw_circle(x, y, radius, fill_color):
+    t.penup()
+    t.goto(x, y - radius)
+    t.pendown()
+    t.color(fill_color, fill_color)
+    t.begin_fill()
+    t.circle(radius)
+    t.end_fill()
+
+# ----------------------------
+# Static Elements (Mountains & Trees)
+# ----------------------------
+def draw_sun():
+    draw_circle(220, 180, 45, "#FFD700")
+
+def draw_mountains():
+    # Background Distant Mountains
+    back_mountains = [(-400, -100), (-200, 100), (0, -100), (200, 120), (400, -100), (400, -300), (-400, -300)]
+    draw_polygon(back_mountains, "#5C6B73")
+
+    # Front Main Peaks
+    peaks = [
+        (-300, -100, -150, 180, 0, -100),
+        (-100, -100, 100, 220, 300, -100)
+    ]
+    for left, bottom, peak_x, peak_y, right, bottom2 in peaks:
+        draw_polygon([(left, bottom), (peak_x, peak_y), (right, bottom2)], "#4A5568")
+        # Snow Caps
+        snow_l = (left + peak_x) / 2
+        snow_r = (right + peak_x) / 2
+        snow_y = (bottom + peak_y) / 2
+        draw_polygon([(snow_l, snow_y), (peak_x, peak_y), (snow_r, snow_y)], "#FFFFFF")
+
+def draw_ground():
+    draw_polygon([(-400, -100), (-400, -300), (400, -300), (400, -100)], "#2E7D32")
+
+def draw_tree(x, y, scale=1.0):
+    trunk_w = 10 * scale
+    trunk_h = 20 * scale
+    draw_polygon([
+        (x - trunk_w/2, y),
+        (x + trunk_w/2, y),
+        (x + trunk_w/2, y + trunk_h),
+        (x - trunk_w/2, y + trunk_h)
+    ], "#5D4037")
+    
+    foliage_y = y + trunk_h
+    layer_w = 40 * scale
+    layer_h = 30 * scale
+    for _ in range(3):
+        draw_polygon([
+            (x - layer_w/2, foliage_y),
+            (x + layer_w/2, foliage_y),
+            (x, foliage_y + layer_h)
+        ], "#1B5E20")
+        foliage_y += layer_h * 0.6
+        layer_w *= 0.8
+
+def draw_all_trees():
+    trees = [
+        (-320, -120, 0.9), (-260, -150, 1.2), (-200, -220, 1.6),
+        (220, -140, 1.0), (290, -180, 1.4), (180, -260, 1.8)
+    ]
+    for tx, ty, s in trees:
+        draw_tree(tx, ty, scale=s)
+
+# ----------------------------
+# Dynamic / Animated Elements
+# ----------------------------
+def draw_river(offset):
+    # River base
+    draw_polygon([(-100, -100), (-50, -100), (150, -300), (-350, -300)], "#29B6F6")
+    
+    # Animated river flow lines
+    t.color("#E0F7FA")
+    t.width(3)
+    for i in range(3):
+        y_pos = -130 - (i * 50) + (offset % 50)
+        if y_pos > -290:
+            x_left = -100 + (y_pos + 100) * 1.25
+            x_right = x_left + 60
+            t.penup()
+            t.goto(x_left, y_pos)
+            t.pendown()
+            t.goto(x_right, y_pos)
+    t.width(1)
+
+def draw_cloud(x, y):
+    t.color("#FFFFFF", "#FFFFFF")
+    draw_circle(x, y, 20, "#FFFFFF")
+    draw_circle(x + 20, y + 10, 25, "#FFFFFF")
+    draw_circle(x + 45, y, 20, "#FFFFFF")
+    draw_circle(x + 20, y - 5, 18, "#FFFFFF")
+
+# ----------------------------
+# Main Animation Loop
+# ----------------------------
+cloud1_x = -350
+cloud2_x = -100
+river_frame = 0
+
+while running:
+    t.clear()
+
+    # Static elements
+    draw_sun()
+    draw_mountains()
+    draw_ground()
+    
+    # Animated elements
+    draw_river(river_frame)
+    draw_all_trees()
+    
+    # Render moving clouds
+    draw_cloud(cloud1_x, 200)
+    draw_cloud(cloud2_x, 140)
+    
+    # Update position values
+    cloud1_x += 1.2
+    cloud2_x += 0.8
+    river_frame += 1.5
+    
+    # Wrap clouds around when off screen
+    if cloud1_x > 450:
+        cloud1_x = -450
+    if cloud2_x > 450:
+        cloud2_x = -450
+
+    # Refresh screen frame
+    screen.update()
+    time.sleep(0.03)
+
+# Close cleanly when clicked
+turtle.bye()
