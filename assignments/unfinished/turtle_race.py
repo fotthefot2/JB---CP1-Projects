@@ -2,7 +2,8 @@
 import random as r
 import turtle as t
 import time
-    
+
+
 turtle_green = t.Turtle()
 turtle_blue = t.Turtle()
 turtle_red = t.Turtle()
@@ -86,7 +87,7 @@ while True:
         if movement >= 20:
             turtle_green.forward(movement*5)
         else:
-            turtle_green.forward(movement)
+            turtle_green.forward(movement*.75)
         time.sleep(0.01)
         if turtle_green.xcor() >= 200:
             print("green wins!")
@@ -101,9 +102,10 @@ while True:
             
 
     elif choice == turtle_blue:
-        turtle_blue.forward(movement)
+        turtle_blue.forward(movement*.5)
+        racers = [turtle_green, turtle_purple, turtle_red, turtle_yellow]
         leader = max(racers, key=lambda turtle: turtle.xcor())
-        leader.backward(movement)
+        leader.backward(movement*5)
 
         time.sleep(0.01)
         if turtle_blue.xcor() >= 200:
