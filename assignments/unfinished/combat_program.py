@@ -34,6 +34,7 @@ def class_info(stats):
     elif character == "archer":
         stats = print("HP:35|SPEED:35|MAGIC:wind")
     return stats
+
 chosen = random.randrange(0,11)
 if chosen >= 0 and chosen <6:
     chosen = "none"
@@ -50,17 +51,37 @@ while True:
     if chosen_class == "1":
         character = "fighter"
         print("you've chosen fighter!")
+        hp = 50
         break
     elif chosen_class == "2":
         character = "mage"
         print("you've chosen mage!")
+        hp = 25
         break
     elif chosen_class == "3":
         character = "archer"
         print("you've chosen archer!")
+        hp = 35
         break
     else:
         print("invalid answer try again")
 print(chosen)
 while True:
-    break
+    print("this is the last fight you will need to do before the world is free from tyrany.")
+    print("before you stands the strongest creature you have ever fought; his skin tightly packed around every well defined muscle. He eyes you with murderous intent; it is time to fight.")
+    input("PRESS ENTER TO START THE BATTLE: ")
+    while True:
+        qte(time_limit=0.5)
+        if qte == True:
+            print("0 damage taken")
+        else:
+            damage = random.randrange(2,11)
+            critical(roll=random.randrange(0,11))
+            if critical == True:
+                print(f"you take {damage*2} damage")
+                hp = hp-damage*2
+                if hp <=0:
+                    dead = True
+                else:
+                    dead = False
+                    
