@@ -129,3 +129,23 @@ def decode (code, shift):
             new_letters.append(letter)
 
     return "".join(new_letters) #this specific part took a while to get to"""
+"""
+        if qte == True:
+            print("0 damage taken")
+        else:
+            damage = random.randrange(2,11)
+            critical(roll=random.randrange(0,11))
+            if critical == True:
+                print(f"you take {damage*2} damage")
+                hp = hp-damage*2
+                if hp <=0:
+                    dead = True
+                else:
+                    dead = False
+            else:
+                print(f"you take {damage} damage")
+                hp = hp-damage
+                if hp <=0:
+                    dead = True
+                else:
+                    dead = False"""
