@@ -149,3 +149,54 @@ def decode (code, shift):
                     dead = True
                 else:
                     dead = False"""
+"""
+import time
+def clean(**kwargs):
+    if not kwargs.get("data"):
+        return "there is nothing"
+    elif kwargs.get("data"):
+        if kwargs.get("type") == "str":
+            return kwargs["data"].strip().lower()
+        elif kwargs.get("type") == "int":
+            return int(kwargs['data'])
+        elif kwargs.get("type") == "float":
+            if kwargs.get("decimals"):
+                decimals = kwargs.get("decimals")
+            return round(float(kwargs["data"]), kwargs["decimals"])
+        elif kwargs.get("type") == "list":
+            return str(f"{x}, " for x in kwargs["data"])
+        elif kwargs.get("type") == "bool":
+            return f"{kwargs['data']}"
+        else:
+            return "why is this not a data type..."
+
+main = {
+    "burger":550,
+    "chicken sandwich":400,
+    "chicken tenders":600,
+    "carne asada":1200
+}
+sides = {
+    "mac'n cheese":200,
+    "fries":350
+}
+drinks = {
+    "lemonade":250,
+    "soda":200,
+    "milkshake":600
+}
+print("welcome to my very fancy resturant!")
+time.sleep(1)
+print("please, our resturant expects you to at least order a drink.")
+print("here is the menu:")
+print("S I D E S")
+print("mac'n cheese")
+print("fries")
+time.sleep(0.5)
+while True:
+    try:
+        main_answer = input("how many: ")
+        main_amount = clean(type="int", data=main_answer)
+        break
+    except ValueError:
+        print("not a number")"""
