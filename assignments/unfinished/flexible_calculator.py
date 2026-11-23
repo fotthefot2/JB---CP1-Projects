@@ -27,3 +27,19 @@ def min():
     print()
 def product():
     print()
+
+print("welcome to the calculator.")
+while True:
+    calc = print("here are the options:\n1 sum calculator\n2 average calculator\n3 max calculator\n4 min calculator\n5 product calculator\n6 exit\nType the number please")
+    if calc == "1":
+        sum()
+    elif calc == "2":
+        average()
+    elif calc == "3":
+        max()
+    elif calc == "4":
+        min()
+    elif calc == "5":
+        product()  
+    elif calc == "6":
+        break
