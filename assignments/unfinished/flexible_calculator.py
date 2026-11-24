@@ -1,5 +1,7 @@
 #judah beagley, period 1, flexible calculator
 import math
+
+
 def clean(**kwargs):
     if not kwargs.get("data"):
         return "there is nothing"
@@ -7,7 +9,7 @@ def clean(**kwargs):
         if kwargs.get("type") == "str":
             return kwargs["data"].strip().lower()
         elif kwargs.get("type") == "int":
-            return int(kwargs['data'])
+            return int(kwargs["data"])
         elif kwargs.get("type") == "float":
             decimals = kwargs.get("decimals", 2)
             return round(float(kwargs["data"]), decimals)
@@ -17,29 +19,95 @@ def clean(**kwargs):
             return f"{kwargs['data']}"
         else:
             return "why is this not a data type..."
-def sum():
-    print()
-def average():
-    print()
-def max():
-    print()
-def min():
-    print()
-def product():
-    print()
+
+
+def sum(*args):
+    total = 0
+    for n in args:
+        total += n
+    return total
+
+
+def average(*args):
+    if not args:
+        return 0
+    total = 0
+    for n in args:
+        total += n
+    return total / len(args)
+
+
+def max(*args):
+    if not args:
+        return None
+    highest = args[0]
+    for n in args[1:]:
+        if n > highest:
+            highest = n
+    return highest
+
+
+def min(*args):
+    if not args:
+        return None
+    lowest = args[0]
+    for n in args[1:]:
+        if n < lowest:
+            lowest = n
+    return lowest
+
+
+def product(*args):
+    if not args:
+        return 0
+    result = 1
+    for n in args:
+        result *= n
+    return result
+
+
+def numbers():
+    user_input = input("Enter numbers separated by spaces: ")
+    cleaned_input = clean(data=user_input, type="str")
+    if cleaned_input == "there is nothing":
+        return []
+    nums = []
+    for token in cleaned_input.split():
+        nums.append(clean(data=token, type="float"))
+    return nums
+
 
 print("welcome to the calculator.")
 while True:
-    calc = print("here are the options:\n1 sum calculator\n2 average calculator\n3 max calculator\n4 min calculator\n5 product calculator\n6 exit\nType the number please")
+    choice = input(
+        "here are the options:\n"
+        "1 sum calculator\n"
+        "2 average calculator\n"
+        "3 max calculator\n"
+        "4 min calculator\n"
+        "5 product calculator\n"
+        "6 exit\n"
+        "Type the number please: "
+    )
+    calc = clean(data=choice, type="str")
+
     if calc == "1":
-        sum()
+        nums = numbers()
+        print(sum(*nums))
     elif calc == "2":
-        average()
+        nums = numbers()
+        print(average(*nums))
     elif calc == "3":
-        max()
+        nums = numbers()
+        print(max(*nums))
     elif calc == "4":
-        min()
+        nums = numbers()
+        print(min(*nums))
     elif calc == "5":
-        product()  
+        nums = numbers()
+        print(product(*nums))
     elif calc == "6":
         break
+    else:
+        print("Invalid option.")
+
